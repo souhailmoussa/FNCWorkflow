@@ -1,0 +1,4 @@
+C:\Users\mseddik\Desktop\K2 Workflows\MembersEServices\MembersEServices\obj\Debug\MembersEServices.dll
+C:\Users\mseddik\Desktop\K2 Workflows\MembersEServices\MembersEServices\bin\Debug\MembersEServices.dll
+C:\Users\shmoussa\Desktop\K2 Workflows\MembersEServices\MembersEServices\bin\Debug\MembersEServices.dll
+C:\Users\shmoussa\Desktop\K2 Workflows\MembersEServices\MembersEServices\obj\Debug\MembersEServices.dll

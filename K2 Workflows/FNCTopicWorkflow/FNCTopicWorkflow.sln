@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{D50D8A3F-5CE1-4E89-9491-F84FAB0E386A}") = "FNCTopicWorkflow", "FNCTopicWorkflow\FNCTopicWorkflow.k2proj", "{EA9C6668-4D3A-46BB-8AFF-F86F5A631F68}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EA9C6668-4D3A-46BB-8AFF-F86F5A631F68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA9C6668-4D3A-46BB-8AFF-F86F5A631F68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA9C6668-4D3A-46BB-8AFF-F86F5A631F68}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{EA9C6668-4D3A-46BB-8AFF-F86F5A631F68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA9C6668-4D3A-46BB-8AFF-F86F5A631F68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA9C6668-4D3A-46BB-8AFF-F86F5A631F68}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{9AEEA99D-2D4A-425A-AE66-46CB297A66C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AEEA99D-2D4A-425A-AE66-46CB297A66C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AEEA99D-2D4A-425A-AE66-46CB297A66C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AEEA99D-2D4A-425A-AE66-46CB297A66C6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

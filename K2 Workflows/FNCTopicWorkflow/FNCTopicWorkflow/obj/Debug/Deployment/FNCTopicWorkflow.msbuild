@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="CoreDeploy">
+  <PropertyGroup>
+    <Deploy_Processes>True</Deploy_Processes>
+    <Create_Notifications>True</Create_Notifications>
+    <Create_Workflow_SmartObjects>True</Create_Workflow_SmartObjects>
+    <Create_Workflow_Reporting_SmartObjects>True</Create_Workflow_Reporting_SmartObjects>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TestOnly Condition="$(TestOnly) == ''">False</TestOnly>
+    <Environment Condition="$(Environment) == ''">Development</Environment>
+  </PropertyGroup>
+  <PropertyGroup Condition="$(Environment) == 'Development'">
+    <EnvironmentFields>
+      <Root Name="Development" xmlns="">
+        <Field Name="Workflow Management Server" Value="Integrated=True;IsPrimaryLogin=True;Authenticate=True;EncryptedPassword=False;Host=K2VM-FNC;Port=5555" />
+        <Field Name="From Address" Value="system@k2.local" />
+        <Field Name="Web Service URL SSL" Value="https://k2vm-fnc" />
+        <Field Name="Mail Server" Value="FNCServer" />
+        <Field Name="Workspace Url" Value="http://K2VM-FNC" />
+        <Field Name="Number Of Emplyee To Approve" Value="5" />
+        <Field Name="Category Server" Value="Integrated=True;IsPrimaryLogin=True;Authenticate=True;EncryptedPassword=False;Host=K2VM-FNC;Port=5555" />
+        <Field Name="ServiceObject Server" Value="Integrated=True;IsPrimaryLogin=True;Authenticate=True;EncryptedPassword=False;Host=K2VM-FNC;Port=5555" />
+        <Field Name="Web Service URL" Value="http://K2VM-FNC" />
+        <Field Name="Workflow Server" Value="Integrated=True;IsPrimaryLogin=True;Authenticate=True;EncryptedPassword=False;Host=K2VM-FNC;Port=5252" />
+        <Field Name="SmartObject Server" Value="Integrated=True;IsPrimaryLogin=True;Authenticate=True;EncryptedPassword=False;Host=K2VM-FNC;Port=5555" />
+      </Root>
+    </EnvironmentFields>
+  </PropertyGroup>
+  <PropertyGroup Condition="$(Environment) == 'Production'">
+    <EnvironmentFields>
+      <Root Name="Production" xmlns="">
+        <Field Name="Workflow Management Server" Value="Integrated=True;IsPrimaryLogin=True;Authenticate=True;EncryptedPassword=False;Host=K2VM-FNC;Port=5555" />
+        <Field Name="From Address" Value="system@k2.local" />
+        <Field Name="Web Service URL SSL" Value="https://k2vm-fnc" />
+        <Field Name="Mail Server" Value="FNCServer" />
+        <Field Name="Workspace Url" Value="http://K2VM-FNC" />
+        <Field Name="Number Of Emplyee To Approve" Value="Integrated=True;IsPrimaryLogin=True;Authenticate=True;EncryptedPassword=False;Host=K2VM-FNC;Port=5555" />
+        <Field Name="Category Server" Value="Integrated=True;IsPrimaryLogin=True;Authenticate=True;EncryptedPassword=False;Host=K2VM-FNC;Port=5555" />
+        <Field Name="ServiceObject Server" Value="Integrated=True;IsPrimaryLogin=True;Authenticate=True;EncryptedPassword=False;Host=K2VM-FNC;Port=5555" />
+        <Field Name="Web Service URL" Value="http://K2VM-FNC" />
+        <Field Name="Workflow Server" Value="Integrated=True;IsPrimaryLogin=True;Authenticate=True;EncryptedPassword=False;Host=K2VM-FNC;Port=5252" />
+        <Field Name="SmartObject Server" Value="Integrated=True;IsPrimaryLogin=True;Authenticate=True;EncryptedPassword=False;Host=K2VM-FNC;Port=5555" />
+      </Root>
+    </EnvironmentFields>
+  </PropertyGroup>
+  <PropertyGroup>
+    <WorkflowManagementConnectionStringProperty>$Field=Workflow Management Server</WorkflowManagementConnectionStringProperty>
+    <SmartObjectConnectionStringProperty>$Field=SmartObject Server</SmartObjectConnectionStringProperty>
+    <DeploymentLabelName>MOEDEV\mseddik - 5/16/2018 8:32:12 AM</DeploymentLabelName>
+    <DeploymentLabelDescription />
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageResource Include="Resources\FNCTopicWorkflow-FNCTopic.Processes.res">
+      <Name>FNCTopicWorkflow-FNCTopic</Name>
+      <Group>Processes</Group>
+    </PackageResource>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageResource Include="Resources\NotificationServiceDetails d52f4ff629dc454aa83f327b4fec2960.Notifications.res">
+      <Name>NotificationServiceDetails d52f4ff629dc454aa83f327b4fec2960</Name>
+      <Group>Notifications</Group>
+    </PackageResource>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageResource Include="Resources\WorkflowReportingServiceDetails d52f4ff6-29dc-454a-a83f-327b4fec2960.WorkflowReportingSmartObjects.res">
+      <Name>WorkflowReportingServiceDetails d52f4ff6-29dc-454a-a83f-327b4fec2960</Name>
+      <Group>WorkflowReportingSmartObjects</Group>
+    </PackageResource>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageResource Include="Resources\FNCTopicWorkflow-FNCTopic-ProcessView.Views.res">
+      <Name>FNCTopicWorkflow-FNCTopic-ProcessView</Name>
+      <Group>Views</Group>
+    </PackageResource>
+  </ItemGroup>
+  <Target Name="Deploy" DependsOnTargets="Deploy Processes;Create Notifications;Create Workflow SmartObjects;Create Workflow Reporting SmartObjects" />
+  <Import Project="ProjectDeployment.targets" />
+  <Target Name="Deploy Processes" Condition="$(Deploy_Processes) == 'true'">
+    <SourceCode.DeploymentTasks.ExportProcessTask TaskGuid="9390f4e41925498ead14c28264c82661" />
+  </Target>
+  <UsingTask TaskName="SourceCode.DeploymentTasks.ExportProcessTask" AssemblyFile="Bin\SourceCode.DeploymentTasks.dll" />
+  <Target Name="Create Notifications" Condition="$(Create_Notifications) == 'true'">
+    <SourceCode.DeploymentTasks.NotificationService.NotificationTask TaskGuid="b973bfbf6e814b8fb22916cf98f07815" />
+  </Target>
+  <UsingTask TaskName="SourceCode.DeploymentTasks.NotificationService.NotificationTask" AssemblyFile="Bin\SourceCode.DeploymentTasks.dll" />
+  <Target Name="Create Workflow SmartObjects" Condition="$(Create_Workflow_SmartObjects) == 'true'" />
+  <Target Name="Create Workflow Reporting SmartObjects" Condition="$(Create_Workflow_Reporting_SmartObjects) == 'true'">
+    <SourceCode.DeploymentTasks.SmartObjectServices.WorkflowReportingServiceTask TaskGuid="496d990a73714f72a75e8dd1f70fd567" />
+  </Target>
+  <UsingTask TaskName="SourceCode.DeploymentTasks.SmartObjectServices.WorkflowReportingServiceTask" AssemblyFile="Bin\SourceCode.DeploymentTasks.dll" />
+</Project>
